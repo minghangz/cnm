@@ -1,0 +1,14 @@
+__pycache__
+*.hdf5
+logs
+scripts
+checkpoints
+config
+data
+datasets
+models
+optimizers
+runners
+train.py
+utils.py
+README_private.md
