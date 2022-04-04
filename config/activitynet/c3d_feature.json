@@ -1,0 +1,53 @@
+{
+  "dataset": {
+    "dataset": "ActivityNet",
+    "feature_path": "data/activitynet/c3d_features.hdf5",
+    "vocab_path": "data/activitynet/glove.pkl",
+    "vocab_size": 8000,
+    "word_dim": 300,
+    "frame_dim": 500,
+    "max_num_words": 20,
+    "max_num_frames": 200,
+    "train_data": "data/activitynet/train_data.json",
+    "test_data": "data/activitynet/test_data.json",
+    "val_data": "data/activitynet/val_data.json"
+  },
+  "train": {
+    "generator": {
+      "lr": 4e-4,
+      "weight_decay": 0,
+      "warmup_updates": 400,
+      "warmup_init_lr": 1e-7
+    },
+    "reconstructor": {
+      "lr": 4e-4,
+      "weight_decay": 0,
+      "warmup_updates": 400,
+      "warmup_init_lr": 1e-7
+    },
+    "batch_size": 128,
+    "max_num_epochs": 30,
+    "model_saved_path": "checkpoints/activitynet/"
+  },
+  "model": {
+    "name": "CNM",
+    "config": {
+      "hidden_size": 256,
+      "use_negative": true,
+      "alpha": 5,
+      "max_width": 1,
+      "dropout": 0.1,
+      "DualTransformer": {
+        "d_model": 256,
+        "num_heads": 4,
+        "num_decoder_layers1": 3,
+        "num_decoder_layers2": 3,
+        "dropout": 0.1
+      }
+    }
+  },
+  "loss": {
+    "beta_1": 0.1,
+    "beta_2": 0.15
+  }
+}

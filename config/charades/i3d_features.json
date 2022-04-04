@@ -1,0 +1,53 @@
+{
+  "dataset": {
+    "dataset": "CharadesSTA",
+    "feature_path": "data/charades/i3d_features.hdf5",
+    "vocab_path": "data/charades/glove.pkl",
+    "vocab_size": 1111,
+    "word_dim": 300,
+    "frame_dim": 1024,
+    "max_num_words": 20,
+    "max_num_frames": 200,
+    "train_data": "data/charades/train.json",
+    "test_data": "data/charades/test.json",
+    "val_data": "data/charades/test.json"
+  },
+  "train": {
+    "generator": {
+      "lr": 4e-4,
+      "weight_decay": 0,
+      "warmup_updates": 400,
+      "warmup_init_lr": 1e-7
+    },
+    "reconstructor": {
+      "lr": 4e-4,
+      "weight_decay": 0,
+      "warmup_updates": 400,
+      "warmup_init_lr": 1e-7
+    },
+    "batch_size": 128,
+    "max_num_epochs": 50,
+    "model_saved_path": "checkpoints/charades/"
+  },
+  "model": {
+    "name": "CNM",
+    "config": {
+      "hidden_size": 256,
+      "use_negative": true,
+      "alpha": 5.5,
+      "max_width": 0.45,
+      "dropout": 0.1,
+      "DualTransformer": {
+        "d_model": 256,
+        "num_heads": 4,
+        "num_decoder_layers1": 3,
+        "num_decoder_layers2": 3,
+        "dropout": 0.1
+      }
+    }
+  },
+  "loss": {
+    "beta_1": 0.1,
+    "beta_2": 0.15
+  }
+}
